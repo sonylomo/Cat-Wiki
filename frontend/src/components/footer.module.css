@@ -1,0 +1,29 @@
+.footer {
+  background-color: black;
+  color: white;
+  border-top-left-radius: 42px;
+  border-top-right-radius: 42px;
+  height: 10vh;
+  padding: 2% 10% 0 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.footer > div> p {
+  text-align: right;
+  font-size: 18px;
+  
+}
+
+.footer_title {
+  font-family: "Mystery Quest", cursive;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.footer > div>  p > a {
+    color: white;
+  text-decoration: none;
+  font-weight: 700;
+}

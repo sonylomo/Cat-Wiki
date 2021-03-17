@@ -1,0 +1,37 @@
+.about {
+  padding: 5% 10% 10% 10%;
+  display: flex;
+  justify-content: space-between;
+}
+.about_right {
+  padding-top: 5%;
+  width: 45%;
+}
+
+.about_right > hr {
+  border: 2px solid #4d270c;
+  border-radius: 77px;
+  width: 59px;
+  margin-bottom: 3%;
+}
+
+.about_right > h2 {
+  font-weight: bold;
+  font-size: 48px;
+  color: #291507;
+  margin-bottom: 10%;
+}
+
+.about_right > p {
+  font-weight: 500;
+  font-size: 18px;
+  color: #291507;
+  margin-bottom: 10%;
+}
+
+.about_right > span {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  color: rgba(41, 21, 7, 0.6);
+}

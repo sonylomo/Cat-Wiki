@@ -8,11 +8,15 @@
 
 <div align="center">
   <h3>
+  <a href="https://www.figma.com/file/6XLJCClikameMhnTZ3RKnM/CatWiki?node-id=0%3A1">
+      Design
+    </a>
+    <span> | </span>
     <a href="https://{your-demo-link.your-domain}">
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://github.com/sonylomo/Cat-Wiki">
       Solution
     </a>
     <span> | </span>
@@ -50,15 +54,28 @@ Introduce your projects by taking a screenshot or a gif. Try to tell visitors a 
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
-- [React](https://reactjs.org/)
-- [Vue.js](https://vuejs.org/)
-- [Tailwind](https://tailwindcss.com/)
+- [Create React App](https://github.com/facebook/create-react-app)
+- [Express JS](https://vuejs.org/)
+- [Mongo DB](https://tailwindcss.com/)
 
 ## Features
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
-This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/f4NJ53rcfgrP6sBMD2jt) was to build an application to complete the given user stories.
+This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/f4NJ53rcfgrP6sBMD2jt) was to build an application to complete the given user stories:
+
+- I can search for cat breeds and select a breed of my choice
+- I can see the top 10 most searched cat breeds
+- I can see the most popular searched cat breeds summary on the homepage
+- I can see the breed details including description, temperament, origin, life span, adaptability, affection level, child-friendly, grooming, intelligence, health issues, social needs, stranger friendly
+- I can see more photo of the breed
+- On mobile, when I select the search option, a modal for breed search should pop up
+- I can go to an article about cats when I click read more on Why you should have a cat section (optional)
+- I can go to the top 10 cats by clicking see more in the dashboard (optional)
+
+API: https://docs.thecatapi.com/
+
+Icon: https://google.github.io/material-design-icons/
 
 ## How To Use
 

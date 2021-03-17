@@ -1,0 +1,100 @@
+.home {
+  margin-top: 2%;
+  padding-top: 10%;
+  padding-left: 10%;
+  background: url(../../assets/HeroImagelg.png) center no-repeat;
+  background-size: cover;
+  height: 63vh;
+  border-top-left-radius: 26px;
+  border-top-right-radius: 26px;
+  color: white;
+}
+
+.home > h1 {
+  font-family: "Mystery Quest", cursive;
+  font-size: 64px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.home > p {
+  width: 35%;
+  font-weight: 500;
+  font-size: 24px;
+  font-style: normal;
+}
+
+.home_left {
+  margin-top: 5%;
+  background-color: white;
+  display: flex;
+  height: 69px;
+  width: 35%;
+  border-radius: 59px;
+  justify-content: center;
+}
+
+.home_left > input {
+  border: none;
+  outline-width: 0;
+}
+
+.home_breeds {
+  padding: 3% 10% 0 10%;
+  background: #e3e1dc;
+  height: 78vh;
+  border-bottom-right-radius: 26px;
+  border-bottom-left-radius: 26px;
+  color: #291507;
+}
+
+.home_breeds > h5 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+.home_breeds > hr {
+  border: 2px solid #4d270c;
+  border-radius: 77px;
+  width: 59px;
+  margin-bottom: 3%;
+}
+
+.home_breeds_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4%;
+}
+
+.home_breeds_title > h2 {
+  font-weight: bold;
+  font-size: 48px;
+  width: 45%;
+}
+
+.home_breeds_title > p {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  color: rgba(41, 21, 7, 0.6);
+}
+
+.home_breeds_pics {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home_breeds_pics > div > img {
+  width: 220px;
+  height: 220px;
+  border-radius: 24px;
+  margin-bottom: 2%;
+}
+
+.home_breeds_pics > div > p {
+  font-weight: 600;
+  font-size: 18px;
+}
