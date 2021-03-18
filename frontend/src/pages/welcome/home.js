@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./home.module.css";
-import logo from "../../assets/CatwikiLogo.svg";
 import { Search } from "@material-ui/icons";
 import { Button } from "@material-ui/core";
 import whitecat from "../../assets/whitecat.jpg";
@@ -8,7 +7,6 @@ import whitecat from "../../assets/whitecat.jpg";
 const Home = () => {
   return (
     <>
-      <img src={logo} alt="catwiki logo" />
       <div className={styles.home}>
         <h1>CatWiki</h1>
         <p>Get to know more about your cat breed</p>
