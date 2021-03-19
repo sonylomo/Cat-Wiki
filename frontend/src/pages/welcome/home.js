@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./home.module.css";
 import { Search } from "@material-ui/icons";
 import { Button } from "@material-ui/core";
-import whitecat from "../../assets/whitecat.jpg";
+// import whitecat from "../../assets/whitecat.jpg";
+import axios from "axios";
 
 const Home = () => {
+  const [Cats, setCats] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const req = await axios.get(
+        "https://api.thecatapi.com/v1/images/search",
+        { params: { limit: 4, size: "full" } }
+      ); // Ask for 4 Images, at full resolution
+      setCats(req.data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className={styles.home}>
@@ -26,7 +41,14 @@ const Home = () => {
           <p>SEE MORE --&gt;</p>
         </div>
         <div className={styles.home_breeds_pics}>
-          <div>
+          {Cats.map((cat) => (
+            <div key={cat.id}>
+              <img alt="white cat" src={cat.url} />
+              <p>{cat.name}</p>
+            </div>
+          ))}
+
+          {/* <div>
             <img alt="white cat" src={whitecat} />
             <p>Bengal</p>
           </div>
@@ -37,11 +59,7 @@ const Home = () => {
           <div>
             <img alt="white cat" src={whitecat} />
             <p>Bengal</p>
-          </div>
-          <div>
-            <img alt="white cat" src={whitecat} />
-            <p>Bengal</p>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
