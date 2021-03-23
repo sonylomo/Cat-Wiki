@@ -1,15 +1,34 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./home.module.css";
 import { Search } from "@material-ui/icons";
 import { Button } from "@material-ui/core";
 // import whitecat from "../../assets/whitecat.jpg";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption,
+} from "@reach/combobox";
 
 const Home = () => {
   const [Cats, setCats] = useState([]);
+  const [Breeds, setBreeds] = useState([]);
+ 
+
+  const searcher = async (e) => {
+    const req = await axios.get(
+      `https://api.thecatapi.com/v1/breeds/search?q=${e.target.value}`
+    );
+    console.log(req.data);
+    setBreeds(req.data);
+
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchCats = async () => {
       const req = await axios.get(
         "https://api.thecatapi.com/v1/images/search",
         { params: { limit: 4, size: "full" } }
@@ -17,7 +36,7 @@ const Home = () => {
       setCats(req.data);
     };
 
-    fetchData();
+    fetchCats();
   }, []);
 
   return (
@@ -27,7 +46,27 @@ const Home = () => {
         <p>Get to know more about your cat breed</p>
 
         <div className={styles.home_left}>
-          <input type="text" placeholder="Enter your breed" />
+          <Combobox aria-label="CatBreeds">
+            <ComboboxInput className="breed-search-input" onChange={searcher} />
+            {Breeds && (
+              <ComboboxPopover className="shadow-popup">
+                {Breeds.length > 0 ? (
+                  <ComboboxList>
+                    {Breeds.map((Breed) => (
+                      <Link to={`/wiki/${Breed.name}`} key={Breed.id}>
+                        <ComboboxOption value={`${Breed.name}`} />
+                      </Link>
+                    ))}
+                  </ComboboxList>
+                ) : (
+                  <span style={{ display: "block", margin: 8 }}>
+                    No Breeds found
+                  </span>
+                )}
+              </ComboboxPopover>
+            )}
+          </Combobox>
+
           <Button>
             <Search style={{ color: " #291507" }} />
           </Button>

@@ -4,6 +4,8 @@ import About from "./pages/welcome/about";
 import Footer from "./components/footer";
 import Header from "./components/header";
 import Wiki from './pages/wiki/wiki'
+// import Wikimedia from './pages/wiki/wikimedia'
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -12,10 +14,11 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
-          <Route path="/wiki">
-            <Wiki />
+          <Route path="/wiki/:breedName" >
+            <Wiki/>
+            {/* <Wikimedia/> */}
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
             <About />
           </Route>

@@ -34,7 +34,7 @@
   justify-content: center;
 }
 
-.home_left > input {
+input > .breed-search-input {
   border: none;
   outline-width: 0;
 }
