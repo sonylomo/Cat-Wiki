@@ -57,3 +57,8 @@ h2 {
   width: 278px;
   border-radius: 24px;
 }
+
+.wiki_lower_images > div > p {
+  color: red;
+  margin-top: 5px;
+}

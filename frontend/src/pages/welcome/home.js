@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import styles from "./home.module.css";
 import { Search } from "@material-ui/icons";
 import { Button } from "@material-ui/core";
-// import whitecat from "../../assets/whitecat.jpg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import {
@@ -16,15 +15,12 @@ import {
 const Home = () => {
   const [Cats, setCats] = useState([]);
   const [Breeds, setBreeds] = useState([]);
- 
 
   const searcher = async (e) => {
     const req = await axios.get(
       `https://api.thecatapi.com/v1/breeds/search?q=${e.target.value}`
     );
-    console.log(req.data);
     setBreeds(req.data);
-
   };
 
   useEffect(() => {
@@ -34,6 +30,7 @@ const Home = () => {
         { params: { limit: 4, size: "full" } }
       ); // Ask for 4 Images, at full resolution
       setCats(req.data);
+      console.log(req.data)
     };
 
     fetchCats();
@@ -47,14 +44,14 @@ const Home = () => {
 
         <div className={styles.home_left}>
           <Combobox aria-label="CatBreeds">
-            <ComboboxInput className="breed-search-input" onChange={searcher} />
+            <ComboboxInput onChange={searcher} className={styles.breed_search} autoFocus/>
             {Breeds && (
-              <ComboboxPopover className="shadow-popup">
+              <ComboboxPopover className={styles.popup}>
                 {Breeds.length > 0 ? (
-                  <ComboboxList>
+                  <ComboboxList classname={styles.popup_list}>
                     {Breeds.map((Breed) => (
-                      <Link to={`/wiki/${Breed.name}`} key={Breed.id}>
-                        <ComboboxOption value={`${Breed.name}`} />
+                      <Link to={`/wiki/${Breed.name}`} key={Breed.id} classname={styles.popup_link}>
+                        <ComboboxOption value={`${Breed.name}`} style={{ fontWeight: "500"}} />
                       </Link>
                     ))}
                   </ComboboxList>
@@ -83,22 +80,9 @@ const Home = () => {
           {Cats.map((cat) => (
             <div key={cat.id}>
               <img alt="white cat" src={cat.url} />
-              <p>{cat.name}</p>
             </div>
           ))}
 
-          {/* <div>
-            <img alt="white cat" src={whitecat} />
-            <p>Bengal</p>
-          </div>
-          <div>
-            <img alt="white cat" src={whitecat} />
-            <p>Bengal</p>
-          </div>
-          <div>
-            <img alt="white cat" src={whitecat} />
-            <p>Bengal</p>
-          </div> */}
         </div>
       </div>
     </>

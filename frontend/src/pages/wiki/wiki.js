@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import styles from "./wiki.module.css";
-import whitecat from "../../assets/whitecat.jpg";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Ratings from "../../components/rating";
 
 const Wiki = () => {
   let { breedName } = useParams();
   const [details, setDetails] = useState([]);
   const [imageUrl, setImageUrl] = useState();
-  const [Cats, setCats] = useState()
+  const [Cats, setCats] = useState();
 
   useEffect(() => {
     console.log(breedName);
@@ -25,34 +25,36 @@ const Wiki = () => {
         `https://api.thecatapi.com/v1/images/${details.reference_image_id}`
       );
       setImageUrl(req.data.url);
-      console.log(req.data.url)
     };
     imageUrl();
 
-    // const otherImg = async () => {
-    //   const req = await axios.get(
-    //     "https://api.thecatapi.com/v1/images/search",
-    //     { params: { limit: 4, size: "full" } }
-    //   ); // Ask for 4 Images, at full resolution
-    //   setCats(req.data);
-    // };
+    const otherImg = async () => {
+      const req = await axios.get(
+        `https://api.thecatapi.com/v1/images/search?breed_id=${details.id}`,
+        { params: { limit: 4, size: "full" } }
+      ); // Ask for 4 Images, at full resolution
+      setCats(req.data);
+    };
 
-    // otherImg();
-  }, [breedName, details.reference_image_id]);  
+    otherImg();
+  }, [breedName, details.reference_image_id, details.id]);
 
   return (
     <>
       <div className={styles.wiki_upper}>
-        <div className={styles.wiki_img}>
-          <img alt={breedName} src={imageUrl} />
-        </div>
+        {imageUrl ? (
+          <div className={styles.wiki_img}>
+            <img alt={breedName} src={imageUrl} />
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
         <div className={styles.wiki_info}>
           {/* cat info from API */}
           <h1>{breedName ? breedName : "loading"}</h1>
           <p>{details.description}</p>
           <p>
-            <span>Temperament: </span>
-            {details.temperament}
+            <Ratings text="Temperament:" rating={details.temperament} />
           </p>
           <p>
             <span>Origin: </span>
@@ -64,6 +66,8 @@ const Wiki = () => {
           </p>
           <p>
             <span>Adaptability: </span>
+            <Ratings text="Adaptability:" rating={details.adaptability} />
+
             {details.adaptability}
           </p>
           <p>
@@ -98,18 +102,15 @@ const Wiki = () => {
       </div>
       <h2>Other Photos</h2>
       <div className={styles.wiki_lower_images}>
-        <div>
-          <img alt="cat on display" src={whitecat} />
-        </div>
-        <div>
-          <img alt="cat on display" src={whitecat} />
-        </div>
-        <div>
-          <img alt="cat on display" src={whitecat} />
-        </div>
-        <div>
-          <img alt="cat on display" src={whitecat} />
-        </div>
+        {Cats ? (
+          Cats.map((cat) => (
+            <div key={cat.id}>
+              <img alt="white cat" src={cat.url} />
+            </div>
+          ))
+        ) : (
+          <p>loading...</p>
+        )}
       </div>
     </>
   );
