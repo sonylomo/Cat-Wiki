@@ -30,7 +30,7 @@ const Home = () => {
         { params: { limit: 4, size: "full" } }
       ); // Ask for 4 Images, at full resolution
       setCats(req.data);
-      console.log(req.data)
+      console.log(req.data);
     };
 
     fetchCats();
@@ -44,14 +44,25 @@ const Home = () => {
 
         <div className={styles.home_left}>
           <Combobox aria-label="CatBreeds">
-            <ComboboxInput onChange={searcher} className={styles.breed_search} autoFocus/>
+            <ComboboxInput
+              onChange={searcher}
+              className={styles.breed_search}
+              autoFocus
+            />
             {Breeds && (
               <ComboboxPopover className={styles.popup}>
                 {Breeds.length > 0 ? (
-                  <ComboboxList classname={styles.popup_list}>
+                  <ComboboxList className={styles.popup_list}>
                     {Breeds.map((Breed) => (
-                      <Link to={`/wiki/${Breed.name}`} key={Breed.id} classname={styles.popup_link}>
-                        <ComboboxOption value={`${Breed.name}`} style={{ fontWeight: "500"}} />
+                      <Link
+                        to={`/wiki/${Breed.name}`}
+                        key={Breed.id}
+                        className={styles.popup_link}
+                      >
+                        <ComboboxOption
+                          value={`${Breed.name}`}
+                          style={{ fontWeight: "500" }}
+                        />
                       </Link>
                     ))}
                   </ComboboxList>
@@ -82,7 +93,6 @@ const Home = () => {
               <img alt="white cat" src={cat.url} />
             </div>
           ))}
-
         </div>
       </div>
     </>
