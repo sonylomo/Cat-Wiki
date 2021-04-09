@@ -1,0 +1,22 @@
+/* .wiki_info > p {
+    font-weight: 500;
+    font-size: 18px;
+    color: #291507;
+    padding-bottom: 4%;
+  }
+  
+  .wiki_info > p > span {
+    font-weight: bold;
+    font-size: 16px;
+    color: #000000;
+  } */
+  
+.rating{
+  display: flex;
+  margin-bottom: 0 !important;
+  padding-left: 0 !important;
+}
+
+.label{
+  width: 50%;
+}
